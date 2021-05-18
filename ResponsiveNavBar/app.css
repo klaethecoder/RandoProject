@@ -10,6 +10,11 @@ body{
     box-sizing: border-box;
 }
 
+a , a:hover, a:visited{
+text-decoration: none;
+color: #000;
+}
+
 img {
     border-radius: 35%;
     height: 100px;
