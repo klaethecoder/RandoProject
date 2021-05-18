@@ -5,7 +5,3 @@ const navBar = document.getElementById('navBar')
 hamburgerBtn.addEventListener('click', ()=> {
     navBar.classList.toggle('open')
 })
-
-// navBar.addEventListener(click, () => {
-  
-// })
