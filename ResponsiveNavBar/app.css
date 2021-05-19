@@ -68,6 +68,8 @@ img {
     top:30px;
     right:30px;
     display: none;
+    transform:rotateX(180deg);
+    transition: .5s ease-in-out;
 }
 
 #hamburgerBtn:hover{
