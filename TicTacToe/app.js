@@ -3,7 +3,7 @@ const restartButton = document.getElementById("resetGame");
 const playText = document.getElementById('playText');
 let moves = 0;
 
-const spaces = [null,null,null,null,null,null,null,null,null]
+let spaces = [null,null,null,null,null,null,null,null,null]
 const O_TEXT = "O";
 const X_TEXT = "X";
 let currentPlayer = O_TEXT;
@@ -34,6 +34,7 @@ const boxClicked = (e) => {
     const id = e.target.id
     if(!spaces[id]){
         spaces[id] = currentPlayer;
+        console.log(spaces[id]);
         e.target.innerText = currentPlayer;
         if(playerHasWon()){
             playText.innerText = `${currentPlayer} has won!`
@@ -62,14 +63,59 @@ const playerHasWon = () => {
             return true;
         }
     }
+    if(spaces[1]=== currentPlayer){
+        if(spaces[4] === currentPlayer && spaces[7] === currentPlayer){
+            console.log(`${currentPlayer} wins up the middle!!!`)
+            return true;
+        } 
+        
+    }
+    if(spaces[2]=== currentPlayer){
+        if(spaces[5] === currentPlayer && spaces[8] === currentPlayer){
+            console.log(`${currentPlayer} wins on the right!!!`)
+            return true;
+        }
+        if(spaces[4] === currentPlayer && spaces[6] === currentPlayer){
+            console.log(`${currentPlayer} wins Diagonally!!!`)
+            return true;
+        }
+    }
+    if(spaces[3]=== currentPlayer){
+        if(spaces[4] === currentPlayer && spaces[5] === currentPlayer){
+            console.log(`${currentPlayer} wins through the middle!!!`)
+            return true;
+        }   
+    }
+    if(spaces[6]=== currentPlayer){
+        if(spaces[7] === currentPlayer && spaces[8] === currentPlayer){
+            console.log(`${currentPlayer} wins on the bottom!!!`)
+            return true;
+        }
+        if(spaces[3] === currentPlayer && spaces[6] === currentPlayer){
+            console.log(`${currentPlayer} wins on the left!!!`)
+            return true;
+        }
+        if(spaces[4] === currentPlayer && spaces[8] === currentPlayer){
+            console.log(`${currentPlayer} wins Diagonally!!!`)
+            return true;
+        }
+    }
+
 }
 
 const reset = ()=> {
-    spaces.map(val => val == null)
+    let id = 0;
+    for (let space in spaces){
+        spaces[id] = null;
+        console.log(space)
+        id++;
+    };
     boxes.forEach(box=>{
         box.innerText = '';
-    })
+    });
     playText.innerText = "LET'S PLAY"
+    console.log(spaces)
+    drawBoard()
 }
 
 restartButton.addEventListener("click", reset);
