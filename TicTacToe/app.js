@@ -40,11 +40,14 @@ const boxClicked = (e) => {
             playText.innerText = `${currentPlayer} has won!`
         }
        
+        else if (moves >= 8){
+            playText.innerText = "Cat's Game";
+        }
         currentPlayer = currentPlayer === O_TEXT ? X_TEXT : O_TEXT;
     }
-    else{
-        playText.innerText = `Cats Game `
-    }
+   
+    moves++;
+
     
 }
 
@@ -86,20 +89,7 @@ const playerHasWon = () => {
             return true;
         }   
     }
-    if(spaces[6]=== currentPlayer){
-        if(spaces[7] === currentPlayer && spaces[8] === currentPlayer){
-            console.log(`${currentPlayer} wins on the bottom!!!`)
-            return true;
-        }
-        if(spaces[3] === currentPlayer && spaces[6] === currentPlayer){
-            console.log(`${currentPlayer} wins on the left!!!`)
-            return true;
-        }
-        if(spaces[4] === currentPlayer && spaces[8] === currentPlayer){
-            console.log(`${currentPlayer} wins Diagonally!!!`)
-            return true;
-        }
-    }
+    
 
 }
 
@@ -115,6 +105,7 @@ const reset = ()=> {
     });
     playText.innerText = "LET'S PLAY"
     console.log(spaces)
+    moves = 0;
     drawBoard()
 }
 
