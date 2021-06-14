@@ -11,7 +11,7 @@ promises.push(fetch(`${url}${i}`)
 Promise.all(promises)
 .then(payload => {
     const pokemon = payload.map((result)=> ({
-        name: result.name,
+        name: result.name.toUpperCase(),
         image: result.sprites["front_default"],
         id: result.id,
         type: result.types.map(type => type.type.name).join(", ")
@@ -26,7 +26,7 @@ const addToPokedex = (monsters) => {
     <img class="card-image" src="${creature.image}"/>
     <h2 class="card-title"> Name: ${creature.name}</h2>
     <h3 class="card-title">Pokedex ID: ${creature.id}</h3>
-        <p class="card-subtitle">Type:s ${creature.type}</p>
+        <p class="card-subtitle">Type: ${creature.type}</p>
     </li>`
         ).join("");
         
