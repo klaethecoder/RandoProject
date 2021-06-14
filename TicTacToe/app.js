@@ -38,6 +38,9 @@ const boxClicked = (e) => {
         e.target.innerText = currentPlayer;
         if(playerHasWon()){
             playText.innerText = `${currentPlayer} has won!`
+            boxes.forEach(box=>{
+                box.removeEventListener("click", boxClicked);
+            });
         }
        
         else if (moves >= 8){
